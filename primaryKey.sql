@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS "messages"(
     --"id" uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
     "id" bigserial PRIMARY KEY,
     "body" varchar(2048) CHECK("body"<>'') NOT NULL,
-    "author" varchar(64) NOT NULL CHECK("author"<>''),
+    "authorId" int REFERENCES "users" ("id") ,
     "createdAt" timestamp NOT NULL  DEFAULT current_timestamp,
     "isRead" boolean  DEFAULT false
 );
 
-INSERT INTO "messages" ("body","author")
+INSERT INTO "messages" ("body","authorId")
  VALUES
-('Hello','I am'),
-('Hello','Me'),
-(')))','I am');
+('Hello',2),
+('Hello',1),
+(')))',4);
